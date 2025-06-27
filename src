@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class ContaTerminal {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            // Fluxo de repetição
+            int numeroConta;
+            do {
+                System.out.println("Digite o número da Conta (positivo):");
+                numeroConta = scanner.nextInt();
+                if (numeroConta <= 0) {
+                    System.out.println("Número inválido. Tente novamente.");
+                }
+            } while (numeroConta <= 0);
+
+            System.out.println("Digite o número da Agência:");
+            String agencia = scanner.next();
+
+            scanner.nextLine(); // limpar o buffer
+
+            System.out.println("Digite o nome do Cliente:");
+            String nomeCliente = scanner.nextLine();
+
+            System.out.println("Digite o saldo inicial:");
+            double saldo = scanner.nextDouble();
+
+            // Fluxo condicional
+            if (saldo > 0) {
+                System.out.println("Conta criada com sucesso!");
+            } else if (saldo == 0) {
+                System.out.println("Conta criada, mas o saldo está zerado.");
+            } else {
+                System.out.println("Conta criada com saldo negativo!");
+            }
+
+            // Resultado final
+            System.out.println("\n--- Dados da Conta ---");
+            System.out.println("Olá " + nomeCliente + ", obrigado por criar uma conta em nosso banco.");
+            System.out.println("Agência: " + agencia + " | Conta: " + numeroConta + " | Saldo: R$ " + saldo);
+
+        } catch (Exception e) {
+            // Fluxo excecional
+            System.out.println("Erro ao processar os dados. Verifique as entradas.");
+        } finally {
+            scanner.close();
+        }
+    }
+}
